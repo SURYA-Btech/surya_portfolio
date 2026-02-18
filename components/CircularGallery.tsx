@@ -94,6 +94,7 @@ function GalleryItem({
                     document.body.style.cursor = 'auto';
                 }}
                 onClick={() => onSelect && onSelect(item)}
+                // @ts-ignore
                 scale={[3, 4, 1]}
                 // @ts-ignore
                 radius={borderRadius || 0}
