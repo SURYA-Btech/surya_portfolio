@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-outfit);
+  --font-heading: var(--font-syne);
+  --font-mono: var(--font-space-grotesk);
+}
+
+/*
+  --- Space-Themed Scroll Velocity Text ---
+  Matches the user's requested gradient and animation.
+*/
+.projects-velocity-text {
+  font-size: clamp(28px, 4vw, 64px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  /* Animated Gradient */
+  background: linear-gradient(90deg, #7C7CFF, #C084FC, #22D3EE, #7C7CFF);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+
+  /* Text Clip */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Ensure visibility/spacing in the scoller */
+  margin-right: 40px;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  /* overflow: hidden; Removed to ensure scroll works */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* 3D Utilities for SkillCard */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Animated Gradient Text */
+  .gradient-text {
+    background: linear-gradient(to right,
+        #00f2ff,
+        #ff0099,
+        #ffe600,
+        #00f2ff);
+    background-size: 300% auto;
+    color: transparent !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: gradientMove 8s linear infinite;
+    display: inline-block;
+    /* Often needed for transform/clip to work right */
+  }
+
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+}
